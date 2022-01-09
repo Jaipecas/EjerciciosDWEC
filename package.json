@@ -1,0 +1,11 @@
+{
+  "name": "ejerciciosDWEC",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://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@github.com/Jaipecas/ejerciciosDWEC.git",
+  "author": "Jaipecas <Jaipecas@github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
