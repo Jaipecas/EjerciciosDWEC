@@ -8,10 +8,6 @@ function lazyMultiply(a, b) {
     return result;
 }
 
-const multi = lazyMultiply(3,2);
-
-console.log(multi);
-
 module.exports = {
     lazyMultiply
 }
