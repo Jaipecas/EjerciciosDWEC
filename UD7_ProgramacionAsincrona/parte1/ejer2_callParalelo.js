@@ -11,11 +11,20 @@ function getResource(resource) {
     })
 }
 
-Promise.all([
-    getResource('resource1'),
-    getResource('resource2'),
-    getResource('resource3')
-]).then(arrayData => {
-    arrayData.forEach(element => console.log(element))
-    console.log('¡Completado!');
-})
+const resource1 = getResource('resource1');
+const resource2 = getResource('resource2');
+const resource3 = getResource('resource3');
+
+resource1
+    .then((data) => {
+        console.log(`El valor del recurso 1 es: ${data}`);
+        return resource2;
+    })
+    .then((data) => {
+        console.log(`El valor del recurso 2 es: ${data}`);
+        return resource3;
+    })
+    .then((data) => {
+        console.log(`El valor del recurso 3 es: ${data}`);
+        console.log('Conmpletado');
+    });

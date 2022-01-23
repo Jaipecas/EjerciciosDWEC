@@ -22,8 +22,5 @@ getResource('resource1')
     })
     .then((data) => {
         console.log(`El valor del recurso 2 es: ${data}`);
-        return '¡Completado!'
-    })
-    .then((data) => {
-        console.log(data);
+        console.log('¡Completado!'); 
     });
