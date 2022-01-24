@@ -1,30 +1,36 @@
 const asyncRequest = require('../parte1/async_request');
 
-function getResource(resource) {
+function print(resourcesFound) {
+    if (Object.keys(resourcesFound).includes('resource1')) {
+        printResource(resourcesFound['resource1']);
+        resourcesFound['resource1'] = undefined;
 
-    return new Promise((resolve, reject) => {
-        try {
-            asyncRequest(resource, (data) => resolve(data));
-        } catch (error) {
-            reject('Fallo al obtener recurso');
+        if (Object.keys(resourcesFound).includes('resource2')) {
+            printResource(resourcesFound['resource2']);
+            resourcesFound['resource2'] = undefined;
+
+            if (Object.keys(resourcesFound).includes('resource3')) {
+                printResource(resourcesFound['resource3']);
+                console.log('¡Completado!');
+            }
         }
-    })
+    }
 }
 
-const resource1 = getResource('resource1');
-const resource2 = getResource('resource2');
-const resource3 = getResource('resource3');
+function printResource(data) {
+    if (data) console.log(data)
+}
 
-resource1
-    .then((data) => {
-        console.log(`El valor del recurso 1 es: ${data}`);
-        return resource2;
-    })
-    .then((data) => {
-        console.log(`El valor del recurso 2 es: ${data}`);
-        return resource3;
-    })
-    .then((data) => {
-        console.log(`El valor del recurso 3 es: ${data}`);
-        console.log('Conmpletado');
+function searchResources(resources) {
+    let resourcesFound = {};
+
+    resources.forEach(resource => {
+        asyncRequest(resource, (data) => {
+            resourcesFound[resource] = data;
+            print(resourcesFound);
+        })
     });
+}
+
+let resources = ['resource1', 'resource2', 'resource3'];
+searchResources(resources);
